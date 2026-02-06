@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="card">
+    <h1>Pay Now</h1>
+    <img src="qr.png">
+    <p>QR valid for 2 minutes</p>
+    <div class="timer" id="time">02:00</div>
+    <button onclick="location.href='done.html'">Paid (confirmed)</button>
+  </div>
+</div>
+
+<script>
+let time = 120;
+let timer = setInterval(()=>{
+  let m = Math.floor(time/60);
+  let s = time%60;
+  document.getElementById("time").innerHTML =
+    `0${m}:${s<10?'0'+s:s}`;
+  time--;
+  if(time < 0) clearInterval(timer);
+},1000);
+</script>
+
+</body>
+</html>
