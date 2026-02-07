@@ -1,31 +1,126 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Payment</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Pay ₹99</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* ===== BACKGROUND ===== */
+body{
+  height:100vh;
+  background:#000;
+  font-family:Arial, sans-serif;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* ===== FALLING GOLD BALLS ===== */
+.gold{
+  position:absolute;
+  top:-20px;
+  width:6px;
+  height:6px;
+  background:gold;
+  border-radius:50%;
+  opacity:0.8;
+  animation: fall linear infinite;
+}
+
+@keyframes fall{
+  to{
+    transform: translateY(110vh);
+  }
+}
+
+/* ===== PAYMENT CARD ===== */
+.card{
+  position:relative;
+  z-index:10;
+  background:rgba(17,17,17,0.95);
+  padding:30px;
+  width:320px;
+  border-radius:18px;
+  text-align:center;
+  color:#fff;
+  box-shadow:0 0 35px rgba(255,215,0,0.15);
+}
+
+h2{
+  margin-bottom:5px;
+}
+
+.amount{
+  font-size:34px;
+  color:#ffd700;
+  margin:15px 0;
+  font-weight:bold;
+}
+
+button{
+  width:100%;
+  padding:15px;
+  font-size:18px;
+  border-radius:12px;
+  border:none;
+  background:linear-gradient(135deg,#ffd700,#ffb700);
+  color:#000;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.note{
+  font-size:12px;
+  opacity:0.7;
+  margin-top:12px;
+}
+</style>
 </head>
+
 <body>
 
-<div class="container">
-  <div class="card">
-    <h1>Pay Now</h1>
-    <img src="qr.png">
-    <p>QR valid for 2 minutes</p>
-    <div class="timer" id="time">02:00</div>
-    <button onclick="location.href='done.html'">Paid (confirmed)</button>
+<!-- PAYMENT CARD -->
+<div class="card">
+  <h2>Click on 99₹ and Pay</h2>
+  <p>UPI Payment</p>
+
+  <div class="amount">100% Safe and Secure </div>
+
+  <button onclick="payNow()">Pay ₹99</button>
+
+  <div class="note">
+    Pay via PhonePe, GPay or Paytm
   </div>
 </div>
 
 <script>
-let time = 120;
-let timer = setInterval(()=>{
-  let m = Math.floor(time/60);
-  let s = time%60;
-  document.getElementById("time").innerHTML =
-    `0${m}:${s<10?'0'+s:s}`;
-  time--;
-  if(time < 0) clearInterval(timer);
-},1000);
+/* ===== UPI PAYMENT ===== */
+function payNow(){
+  window.location.href =
+  "upi://pay?pa=royal1234567-@ybl&pn=Royal&am=99&cu=INR";
+}
+
+/* ===== CREATE GOLD BALLS ===== */
+const totalBalls = 60;
+
+for(let i=0;i<totalBalls;i++){
+  let ball = document.createElement("div");
+  ball.className = "gold";
+  ball.style.left = Math.random()*100 + "vw";
+  ball.style.animationDuration = (3 + Math.random()*5) + "s";
+  ball.style.animationDelay = Math.random()*5 + "s";
+  ball.style.opacity = Math.random();
+  document.body.appendChild(ball);
+}
 </script>
 
 </body>

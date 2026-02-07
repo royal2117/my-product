@@ -1,55 +1,125 @@
-body{
-  margin:0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: Arial, sans-serif;
-  background:#0d0d0d;
-  color:#fff;
-  text-align:center;
+  color: white;
+  background: black;
+  overflow: hidden;
 }
 
-.container{
-  padding:20px;
+/* 🔥 PREMIUM FALLING GOLD BALLS BACKGROUND */
+.bg {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #141414, #000 70%);
+  z-index: -1;
+  overflow: hidden;
 }
 
-.card{
-  background:#111;
-  border-radius:15px;
-  padding:20px;
-  margin-top:30px;
-  box-shadow:0 0 20px rgba(255,215,0,0.2);
+.bg span {
+  position: absolute;
+  top: -10%;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #ffd700, #b8860b);
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(255,215,0,0.8);
+  animation: fall linear infinite;
+  opacity: 0.9;
 }
 
-img{
-  width:100%;
-  border-radius:10px;
+@keyframes fall {
+  to {
+    transform: translateY(120vh);
+  }
 }
 
-h1{
-  color:gold;
+/* CREATE MULTIPLE BALLS */
+.bg span:nth-child(1) { left: 5%;  animation-duration: 10s; }
+.bg span:nth-child(2) { left: 15%; animation-duration: 14s; width:14px;height:14px;}
+.bg span:nth-child(3) { left: 25%; animation-duration: 9s; }
+.bg span:nth-child(4) { left: 35%; animation-duration: 16s; width:18px;height:18px;}
+.bg span:nth-child(5) { left: 45%; animation-duration: 11s; }
+.bg span:nth-child(6) { left: 55%; animation-duration: 13s; width:16px;height:16px;}
+.bg span:nth-child(7) { left: 65%; animation-duration: 8s; }
+.bg span:nth-child(8) { left: 75%; animation-duration: 15s; width:20px;height:20px;}
+.bg span:nth-child(9) { left: 85%; animation-duration: 12s; }
+.bg span:nth-child(10){ left: 95%; animation-duration: 18s; width:22px;height:22px;}
+
+/* CARD */
+.card {
+  background: rgba(0,0,0,0.78);
+  border: 2px solid gold;
+  border-radius: 22px;
+  padding: 26px;
+  width: 90%;
+  max-width: 390px;
+  margin: 90px auto;
+  text-align: center;
+  box-shadow: 0 0 45px rgba(255,215,0,0.45);
+  backdrop-filter: blur(6px);
 }
 
-.price{
-  font-size:24px;
-  color:#00ff99;
+/* TEXT */
+h1 {
+  font-size: 36px;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
 }
 
-button{
-  background:gold;
-  color:black;
-  border:none;
-  padding:15px 25px;
-  font-size:18px;
-  border-radius:10px;
-  margin-top:20px;
-  cursor:pointer;
+.big-text {
+  font-size: 24px;
+  margin: 12px 0;
 }
 
-.timer{
-  font-size:28px;
-  color:red;
-  margin-top:10px;
+.price {
+  font-size: 32px;
+  color: gold;
+  margin: 16px 0;
 }
 
-a{
-  text-decoration:none;
-  color:black;
+/* IMAGES */
+.product-img {
+  width: 100%;
+  border-radius: 16px;
+  margin: 16px 0;
+}
+
+/* QR */
+.qr-img {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+  background: white;
+  padding: 12px;
+  border-radius: 20px;
+  margin: 22px auto;
+  display: block;
+  box-shadow: 0 0 30px rgba(255,215,0,0.7);
+}
+
+/* BUTTON */
+.btn {
+  display: block;
+  margin-top: 22px;
+  padding: 17px;
+  font-size: 21px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ffd700, #ffb700);
+  color: black;
+  text-decoration: none;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(255,215,0,0.6);
+}
+
+/* TIMER */
+#timer {
+  font-size: 34px;
+  color: #ff4d4d;
+  margin: 18px 0;
+  font-weight: bold;
 }
